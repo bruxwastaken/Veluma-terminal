@@ -38,18 +38,13 @@
 
         /* FIXED STABLE GRID LAYOUT: Forces data rows to sit side-by-side cleanly */
         .telemetry-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 0; margin-bottom: 60px; }
-        .telemetry-node { text-align: center; }
-        .tel-label { font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .telemetry-node { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .tel-label { font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .tel-value { font-size: 24px; color: #fff; font-weight: 800; }
         
-        .chain-icons-container { display: flex; gap: 4px; justify-content: center; margin-top: 4px; }
-        .chain-badge { width: 38px; height: 18px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; color: #fff; }
-        .chain-sol { background: #14f195; color: #000; }
-        .chain-eth { background: #627eea; }
-        .chain-base { background: #0052ff; }
-        .chain-bsc { background: #f3ba2f; color: #000; }
-        .chain-poly { background: #8247e5; }
-        .chain-arb { background: #28a0f0; }
+        /* FIXED MATCHING ICON GRID CONTAINER */
+        .chain-icons-container { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 4px; }
+        .chain-icon-img { width: 22px; height: 22px; object-fit: contain; border-radius: 4px; }
 
         .section-title { font-size: 20px; color: #fff; font-weight: 700; margin-bottom: 24px; }
 
@@ -121,14 +116,21 @@
                 <div class="tel-value">21K+</div>
             </div>
             <div class="telemetry-node">
-                <div class="tel-label">Supported Chains</div>
+                <div class="tel-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; opacity:0.7;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    Supported Chains
+                </div>
+                <!-- FIXED: PIXEL PERFECT LOGO MATCH FROM YOUR EXACT SNAPSHOT -->
                 <div class="chain-icons-container">
-                    <div class="chain-badge chain-sol">SOL</div>
-                    <div class="chain-badge chain-eth">ETH</div>
-                    <div class="chain-badge chain-base">BASE</div>
-                    <div class="chain-badge chain-bsc">BSC</div>
-                    <div class="chain-badge chain-poly">POLY</div>
-                    <div class="chain-badge chain-arb">ARB</div>
+                    <img class="chain-icon-img" src="https://coingecko.com" alt="Solana">
+                    <img class="chain-icon-img" src="https://coingecko.com" alt="BSC">
+                    <img class="chain-icon-img" src="https://coingecko.com" alt="Sui">
+                    <img class="chain-icon-img" src="https://coingecko.com" alt="Base">
+                    <img class="chain-icon-img" src="https://amazonaws.com" onerror="this.src='https://coingecko.com'" alt="Movement">
+                    <img class="chain-icon-img" src="https://coingecko.com" alt="Ethereum">
+                    <img class="chain-icon-img" src="https://pump.fun" onerror="this.style.background='#9eff00'; this.style.borderRadius='50%';" alt="Pump.fun">
+                    <img class="chain-icon-img" src="https://coingecko.com" alt="Sonic">
+                    <img class="chain-icon-img" src="https://coingecko.com" alt="Arbitrum">
                 </div>
             </div>
         </div>
@@ -137,25 +139,4 @@
         
         <!-- Interactive Showcases Layout Panel -->
         <div class="features-layout">
-            <div class="feature-card">
-                <div>
-                    <div class="card-header-meta">
-                        <h4>🔎 scan.insiders</h4>
-                        <div class="balance-pill-badge">Scanner</div>
-                    </div>
-                    <p class="card-desc" style="margin-top: 8px;">Isolate structural bundle cluster configurations and developer wallet allocations before tokens deploy [7a75dce127ff].</p>
-                </div>
-                <div class="interactive-container-panel">
-                    <div class="panel-row">
-                        <span class="panel-label">Target Settings</span>
-                        <span class="panel-value-accent">View Node</span>
-                    </div>
-                    <div class="checkbox-item-wrapper">
-                        <div class="checkbox-mock-indicator"></div>
-                        <span style="font-weight:600; color:#fff;">On-Chain Bubble Maps (GMGN)</span>
-                    </div>
-                </div>
-                <a class="feature-action" href="https://gmgn.ai" target="_blank">LAUNCH MODULE ↗</a>
-            </div>
-
             <div class="feature-card">
