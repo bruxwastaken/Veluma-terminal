@@ -29,24 +29,20 @@
         
         .wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
         
-        /* Subtle Glow Radial Aura */
         .glow-orb-top {
             position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
             width: 800px; height: 400px; background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, rgba(0,0,0,0) 70%);
             z-index: -1; pointer-events: none;
         }
 
-        /* Clean Top Navigation Bar (Image 3 Support Node Link completely removed) */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 0; margin-bottom: 60px; border-bottom: 1px solid var(--border); }
         .nav-logo { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
 
-        /* Centered Marketing-Style Hero Section (Image 4 Pill Badge completely removed) */
         .hero-section { text-align: center; max-width: 800px; margin: 0 auto 70px auto; padding-top: 20px; }
         .hero-section h2 { font-size: 54px; font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -2px; margin-bottom: 20px; }
         .hero-section h2 span { background: linear-gradient(135deg, #fff 30%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-section p.hero-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 35px; font-weight: 400; max-width: 650px; margin-left: auto; margin-right: auto; }
 
-        /* Custom Telemetry Bar Row */
         .telemetry-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 30px 0; margin-bottom: 80px; }
         .telemetry-node { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .tel-label { font-size: 13px; color: #fff; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
@@ -60,26 +56,22 @@
         .chain-poly { background: #8247e5; }
         .chain-arb { background: #28a0f0; }
 
-        /* Section Title Header */
         .section-title { font-size: 22px; color: #fff; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 30px; text-align: left; }
 
-        /* HIGH-FIDELITY BUILT-IN INTERACTIVE SHOWCASE TILES LAYER */
         .features-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 100px; }
-        .feature-card { background: var(--panel); border: 1px solid var(--border); padding: 24px; border-radius: 12px; display: flex; flex-direction: column; gap: 20px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .feature-card { background: var(--panel); border: 1px solid var(--border); padding: 24px; border-radius: 12px; display: flex; flex-direction: column; gap: 20px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); justify-content: space-between; }
         .feature-card:hover { border-color: var(--border-glow); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
         
         .card-header-meta { display: flex; justify-content: space-between; align-items: center; }
         .card-header-meta h4 { color: #fff; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
         .card-desc { color: var(--text-secondary); font-size: 12.5px; line-height: 1.5; min-height: 38px; }
         
-        /* Interactive Code Block Panels Mocking RapidLaunch's Animated Setup UI Elements */
         .interactive-container-panel { background: var(--panel-inner); border: 1px solid var(--border); padding: 16px; border-radius: 8px; font-size: 12px; }
         .panel-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .panel-row:last-child { margin-bottom: 0; }
         .panel-label { color: var(--text-secondary); font-weight: 500; }
         .panel-value-accent { color: #fff; font-weight: 600; background: #1c1c24; padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 6px; }
         
-        /* Checkbox list and Input UI Replica styles */
         .checkbox-item-wrapper { display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; width: 100%; margin-top: 8px; }
         .checkbox-mock-indicator { width: 14px; height: 14px; border: 1px solid var(--accent-glow); background: var(--accent); border-radius: 3px; display: flex; align-items: center; justify-content: center; }
         .checkbox-mock-indicator::after { content: "✓"; color: #fff; font-size: 9px; font-weight: bold; }
@@ -87,7 +79,6 @@
         .input-mock-field { width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 8px 12px; color: #fff; font-family: monospace; border-radius: 6px; font-size: 11px; outline: none; margin-top: 6px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
         .balance-pill-badge { font-size: 10px; color: var(--neon); background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
 
-        /* Control Toggles Array Layout elements */
         .toggle-options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px; }
         .toggle-opt-node { background: var(--bg); border: 1px solid var(--border); padding: 6px; border-radius: 4px; text-align: center; color: var(--text-secondary); font-size: 11px; font-weight: 600; cursor: pointer; }
         .toggle-opt-node.active-node-state { background: #fff; color: #000; border-color: #fff; }
@@ -95,7 +86,6 @@
         .feature-action { display: block; background: #fff; color: #000; padding: 12px; font-size: 13px; text-decoration: none; font-weight: 700; border-radius: 6px; margin-top: 10px; text-align: center; letter-spacing: -0.1px; transition: all 0.2s; }
         .feature-action:hover { background: #e4e4e7; transform: translateY(-1px); }
 
-        /* IMAGE FOOTER CONTAINER SECTION */
         .bookmarklet-box { 
             border-top: 1px solid var(--border);
             padding: 100px 20px; 
@@ -107,7 +97,6 @@
         }
         .box-title { font-size: 42px; color: #fff; margin-bottom: 30px; font-weight: 700; letter-spacing: -1.5px; }
         
-        /* White Drag Target Anchor matching "Start Launching" button look */
         .drag-node-anchor { 
             display: inline-block; 
             background: #fff; 
@@ -124,7 +113,6 @@
         }
         .drag-node-anchor:hover { background: #e4e4e7; border-color: #e4e4e7; }
         
-        /* Footer Link Grid Section */
         footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
         .footer-left { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
         .footer-logo { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -0.5px; }
@@ -149,3 +137,15 @@
             <div class="nav-logo">Veluma</div>
         </nav>
 
+        <div class="hero-section">
+            <h2><span>Track on-chain data instantly.</span><br>No delay. No noise.</h2>
+            <p class="hero-desc">Independent on-chain execution architecture. Run instant bundle analysis, map hidden distribution paths, and secure your wallet entries straight from your viewport layer.</p>
+        </div>
+
+        <div class="telemetry-row">
+            <div class="telemetry-node">
+                <div class="tel-label">Delay</div>
+                <div class="tel-value">0.00ms</div>
+            </div>
+            <div class="telemetry-node">
+                <div class="tel-label">
