@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>veluma. // on-chain toolset</title>
+    <title>Veluma // Rapid On-Chain Toolkit</title>
     <style>
         :root { 
             --bg: #030303; 
             --panel: #09090b; 
-            --panel-card: #0c0c0f;
-            --border: #14141a; 
-            --border-glow: #1e1e26;
+            --panel-card: #0d0d12;
+            --panel-inner: #14141a;
+            --border: #1a1a24; 
+            --border-glow: #27273a;
             --text-main: #f4f4f5; 
             --text-secondary: #71717a; 
             --accent: #2563eb; 
@@ -21,7 +22,7 @@
         body { 
             background: var(--bg); 
             color: var(--text-main); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             overflow-x: hidden;
             letter-spacing: -0.2px;
         }
@@ -35,38 +36,66 @@
             z-index: -1; pointer-events: none;
         }
 
-        /* Clean Top Navigation Bar with Contact/Support Anchor Link */
+        /* Clean Top Navigation Bar (Image 3 Support Node Link completely removed) */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 0; margin-bottom: 60px; border-bottom: 1px solid var(--border); }
-        .nav-logo { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -1px; font-family: monospace; }
-        .nav-logo span { color: var(--accent-glow); }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; font-family: monospace; font-weight: 600; padding: 6px 12px; transition: color 0.2s; }
-        .nav-links a:hover { color: #fff; }
+        .nav-logo { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
 
-        /* Centered Marketing-Style Hero Section focused purely on tools */
-        .hero-section { text-align: center; max-width: 800px; margin: 0 auto 90px auto; padding-top: 20px; }
-        .hero-tag { display: inline-block; background: var(--panel); border: 1px solid var(--border); color: var(--accent-glow); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; margin-bottom: 24px; letter-spacing: 0.5px; text-transform: uppercase; font-family: monospace; }
+        /* Centered Marketing-Style Hero Section (Image 4 Pill Badge completely removed) */
+        .hero-section { text-align: center; max-width: 800px; margin: 0 auto 70px auto; padding-top: 20px; }
         .hero-section h2 { font-size: 54px; font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -2px; margin-bottom: 20px; }
         .hero-section h2 span { background: linear-gradient(135deg, #fff 30%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-section p.hero-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 35px; font-weight: 400; max-width: 650px; margin-left: auto; margin-right: auto; }
 
-        /* Refined Custom Telemetry Bar Row */
-        .telemetry-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 30px 0; margin-bottom: 90px; }
-        .telemetry-node { text-align: center; }
-        .tel-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-family: monospace; }
-        .tel-value { font-size: 24px; color: #fff; font-weight: 700; font-family: monospace; }
+        /* Custom Telemetry Bar Row */
+        .telemetry-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 30px 0; margin-bottom: 80px; }
+        .telemetry-node { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .tel-label { font-size: 13px; color: #fff; font-weight: 600; letter-spacing: -0.2px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+        .tel-value { font-size: 26px; color: #fff; font-weight: 800; letter-spacing: -0.5px; }
+        .chain-icons-container { display: flex; gap: 6px; justify-content: center; margin-top: 4px; }
+        .chain-badge { width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; text-transform: uppercase; color: #fff; }
+        .chain-sol { background: #14f195; color: #000; }
+        .chain-eth { background: #627eea; }
+        .chain-base { background: #0052ff; }
+        .chain-bsc { background: #f3ba2f; color: #000; }
+        .chain-poly { background: #8247e5; }
+        .chain-arb { background: #28a0f0; }
 
-        /* UI Feature Cards Layout */
-        .section-title { font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; font-family: monospace; display: flex; align-items: center; gap: 12px; }
-        .section-title::after { content: ""; height: 1px; background: var(--border); flex-grow: 1; }
+        /* Section Title Header */
+        .section-title { font-size: 22px; color: #fff; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 30px; text-align: left; }
+
+        /* HIGH-FIDELITY BUILT-IN INTERACTIVE SHOWCASE TILES LAYER */
         .features-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 100px; }
-        .feature-card { background: var(--panel); border: 1px solid var(--border); padding: 35px 28px; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-        .feature-card:hover { border-color: var(--border-glow); background: var(--panel-card); transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .feature-info h4 { color: #fff; font-size: 19px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.5px; }
-        .feature-info p { color: var(--text-secondary); font-size: 13.5px; line-height: 1.6; }
-        .feature-action { display: block; background: #18181b; border: 1px solid var(--border); color: var(--text-main); padding: 10px; font-size: 12px; text-decoration: none; font-weight: 600; border-radius: 6px; margin-top: 30px; text-align: center; font-family: monospace; transition: all 0.2s; }
-        .feature-action:hover { background: #fff; color: #000; border-color: #fff; }
+        .feature-card { background: var(--panel); border: 1px solid var(--border); padding: 24px; border-radius: 12px; display: flex; flex-direction: column; gap: 20px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .feature-card:hover { border-color: var(--border-glow); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .card-header-meta { display: flex; justify-content: space-between; align-items: center; }
+        .card-header-meta h4 { color: #fff; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .card-desc { color: var(--text-secondary); font-size: 12.5px; line-height: 1.5; min-height: 38px; }
+        
+        /* Interactive Code Block Panels Mocking RapidLaunch's Animated Setup UI Elements */
+        .interactive-container-panel { background: var(--panel-inner); border: 1px solid var(--border); padding: 16px; border-radius: 8px; font-size: 12px; }
+        .panel-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .panel-row:last-child { margin-bottom: 0; }
+        .panel-label { color: var(--text-secondary); font-weight: 500; }
+        .panel-value-accent { color: #fff; font-weight: 600; background: #1c1c24; padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 6px; }
+        
+        /* Checkbox list and Input UI Replica styles */
+        .checkbox-item-wrapper { display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; width: 100%; margin-top: 8px; }
+        .checkbox-mock-indicator { width: 14px; height: 14px; border: 1px solid var(--accent-glow); background: var(--accent); border-radius: 3px; display: flex; align-items: center; justify-content: center; }
+        .checkbox-mock-indicator::after { content: "✓"; color: #fff; font-size: 9px; font-weight: bold; }
+        
+        .input-mock-field { width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 8px 12px; color: #fff; font-family: monospace; border-radius: 6px; font-size: 11px; outline: none; margin-top: 6px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+        .balance-pill-badge { font-size: 10px; color: var(--neon); background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
 
-        /* DIRECT MATCH FOR REPLICA IMAGE FOOTER CONTAINER SECTION */
+        /* Control Toggles Array Layout elements */
+        .toggle-options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px; }
+        .toggle-opt-node { background: var(--bg); border: 1px solid var(--border); padding: 6px; border-radius: 4px; text-align: center; color: var(--text-secondary); font-size: 11px; font-weight: 600; cursor: pointer; }
+        .toggle-opt-node.active-node-state { background: #fff; color: #000; border-color: #fff; }
+
+        .feature-action { display: block; background: #fff; color: #000; padding: 12px; font-size: 13px; text-decoration: none; font-weight: 700; border-radius: 6px; margin-top: 10px; text-align: center; letter-spacing: -0.1px; transition: all 0.2s; }
+        .feature-action:hover { background: #e4e4e7; transform: translateY(-1px); }
+
+        /* IMAGE FOOTER CONTAINER SECTION */
         .bookmarklet-box { 
             border-top: 1px solid var(--border);
             padding: 100px 20px; 
@@ -95,11 +124,10 @@
         }
         .drag-node-anchor:hover { background: #e4e4e7; border-color: #e4e4e7; }
         
-        /* Direct Replica Layout of your Screenshot Footer Link Grid Section */
+        /* Footer Link Grid Section */
         footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .footer-left { font-family: monospace; }
-        .footer-logo { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; }
-        .footer-logo span { color: var(--accent-glow); }
+        .footer-left { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+        .footer-logo { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -0.5px; }
         .footer-subtext { color: var(--text-secondary); font-size: 12px; }
         .footer-links-grid { display: flex; gap: 80px; }
         .footer-col h5 { color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: monospace; font-weight: 600; }
@@ -108,7 +136,8 @@
         .footer-col ul li a { color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: color 0.2s; }
         .footer-col ul li a:hover { color: #fff; }
 
-        @media(max-width: 768px) { .features-layout, .telemetry-row, footer, .footer-links-grid { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } .hero-section h2 { font-size: 38px; } .bookmarklet-box { padding: 60px 20px; } .box-title { font-size: 28px; } }
+        @media(max-width: 992px) { .features-layout { grid-template-columns: 1fr; } }
+        @media(max-width: 768px) { .telemetry-row, footer, .footer-links-grid { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } .hero-section h2 { font-size: 38px; } .bookmarklet-box { padding: 60px 20px; } .box-title { font-size: 28px; } }
     </style>
 </head>
 <body>
@@ -117,42 +146,6 @@
 
     <div class="wrapper">
         <nav>
-            <div class="nav-logo">veluma<span>.</span></div>
-            <div class="nav-links">
-                <a href="https://x.com" target="_blank">// support_node</a>
-            </div>
+            <div class="nav-logo">Veluma</div>
         </nav>
 
-        <div class="hero-section">
-            <div class="hero-tag">System Release // v3.0</div>
-            <h2><span>Track on-chain data instantly.</span><br>No delay. No noise.</h2>
-            <p class="hero-desc">Independent on-chain execution architecture. Run instant bundle analysis, map hidden distribution paths, and secure your wallet entries straight from your viewport layer.</p>
-        </div>
-
-        <div class="telemetry-row">
-            <div class="telemetry-node"><div class="tel-label">delay</div><div class="telemetry-content tel-value">0.00ms</div></div>
-            <div class="telemetry-node"><div class="tel-label">active scripts</div><div class="telemetry-content tel-value">3 / 3</div></div>
-            <div class="telemetry-node"><div class="tel-label">sandbox architecture</div><div class="telemetry-content tel-value">local_storage</div></div>
-        </div>
-
-        <h3 class="section-title">web terminal application modules</h3>
-        <div class="features-layout">
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>🔎 scan.insiders</h4>
-                    <p>Isolate structural bundle cluster configurations and developer wallet allocations before tokens deploy [7a75dce127ff].</p>
-                </div>
-                <a class="feature-action" href="https://gmgn.ai" target="_blank">LAUNCH MODULE ↗</a>
-            </div>
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>🚨 metric.filters</h4>
-                    <p>Stream real-time parameter validation queries straight into automated open-source cloud blockchain metrics alerts.</p>
-                </div>
-                <a class="feature-action" href="https://t.me" target="_blank">OPEN STREAM ↗</a>
-            </div>
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>🛡️ ledger.audit</h4>
-                    <p>Verify contract authority boundaries instantly to audit Mint, Freeze, or LP allocation status entries completely for free.</p>
-                </div>
