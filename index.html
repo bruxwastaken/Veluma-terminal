@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>veluma.</title>
+    <style>
+        body { background: #070707; color: #e5e5e5; font-family: monospace; padding: 40px 20px; max-width: 600px; margin: 0 auto; }
+        h1 { color: #fff; font-weight: normal; margin-bottom: 5px; letter-spacing: -1px; }
+        .sub { color: #666; margin-bottom: 40px; font-size: 13px; }
+        .grid { display: flex; flex-direction: column; gap: 15px; margin-bottom: 40px; }
+        .btn { display: block; background: #111; border: 1px solid #222; color: #fff; padding: 18px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.2s; border-radius: 4px; text-align: center; }
+        .btn:hover { background: #161616; border-color: #333; }
+        .vault-box { background: #111; border: 1px solid #222; padding: 20px; border-radius: 4px; }
+        h3 { margin-top: 0; font-weight: normal; color: #fff; border-bottom: 1px solid #222; padding-bottom: 8px; }
+        input { width: 100%; background: #070707; border: 1px solid #222; color: #fff; padding: 12px; font-family: monospace; margin-bottom: 10px; border-radius: 4px; box-sizing: border-box; }
+        input:focus { border-color: #444; outline: none; }
+        .save-btn { width: 100%; background: #fff; color: #000; border: none; padding: 12px; font-weight: bold; font-family: monospace; cursor: pointer; border-radius: 4px; }
+        .save-btn:hover { background: #ccc; }
+        .card { background: #070707; border: 1px solid #222; padding: 15px; margin-top: 12px; border-radius: 4px; }
+        .ca { color: #666; font-size: 11px; word-break: break-all; margin: 6px 0; }
+        .trade-lnk { display: inline-block; color: #55afff; text-decoration: none; font-size: 12px; font-weight: bold; margin-top: 4px; }
+    </style>
+</head>
+<body>
+
+    <h1>veluma.</h1>
+    <div class="sub">independent on-chain data node. zero community.</div>
+
+    <!-- The 3-Button Feature Menu -->
+    <div class="grid">
+        <!-- CRUCIAL STEP: PRELOADED WITH YOUR SPECIFIC REWARD PARTNER LINKS -->
+        <a class="btn" href="https://gmgn.ai/r/5ZCH31S7" target="_blank">[ 🔎 scan.insider.bundles ]</a>
+        <a class="btn" href="https://t.me" target="_blank">[ 🚨 active.metric.filters ]</a>
+        <a class="btn" href="https://bullx.cash" target="_blank">[ 🛡️ check.ledger.authority ]</a>
+    </div>
+
+    <!-- Embedded Feature: Custom Bookmark Vault -->
+    <div class="vault-box">
+        <h3>[ 📦 veluma.bookmark.vault ]</h3>
+        <input type="text" id="ticker" placeholder="token ticker ($sol)">
+        <input type="text" id="contract" placeholder="contract address (ca)">
+        <button class="save-btn" id="saveBtn">+ Save to Local Machine Memory</button>
+        <div id="vaultList"></div>
+    </div>
+
+    <script>
+        const saveBtn = document.getElementById('saveBtn');
+        const vaultList = document.getElementById('vaultList');
+
+        function renderVault() {
+            vaultList.innerHTML = '';
+            const storage = JSON.parse(localStorage.getItem('veluma_bookmarks') || '[]');
+            storage.reverse().forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <strong>${item.ticker.toUpperCase()}</strong>
+                    <div class="ca">${item.ca}</div>
+                    <!-- REDIRECTS TRADERS TO YOUR ACTIVE INCOME POOL -->
+                    <a class="trade-lnk" href="https://gmgn.ai/r/5ZCH31S7" target="_blank">⚡ Execute Trade ↗</a>
+                `;
+                vaultList.appendChild(card);
+            });
+        }
+
+        saveBtn.addEventListener('click', () => {
+            const ticker = document.getElementById('ticker').value.trim();
+            const ca = document.getElementById('contract').value.trim();
+            if(!ticker || !ca) return alert('Enter ticker and contract address.');
+            
+            const storage = JSON.parse(localStorage.getItem('veluma_bookmarks') || '[]');
+            storage.push({ ticker, ca });
+            localStorage.setItem('veluma_bookmarks', JSON.stringify(storage));
+            
+            document.getElementById('ticker').value = '';
+            document.getElementById('contract').value = '';
+            renderVault();
+        });
+
+        renderVault();
+    </script>
+</body>
+</html>
