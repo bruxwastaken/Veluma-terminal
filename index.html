@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>veluma. // rapid token utility</title>
+    <title>veluma. // on-chain toolset</title>
     <style>
         :root { 
             --bg: #030303; 
@@ -26,42 +26,39 @@
             letter-spacing: -0.2px;
         }
         
-        /* Main Application Structural Canvas */
         .wrapper { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; }
         
-        /* Premium Background Gradient Radial Orbs */
+        /* Subtle Glow Radial Aura */
         .glow-orb-top {
             position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-            width: 800px; height: 400px; background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, rgba(0,0,0,0) 70%);
+            width: 800px; height: 400px; background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, rgba(0,0,0,0) 70%);
             z-index: -1; pointer-events: none;
         }
 
-        /* Top Brand Navigation Layer */
+        /* Clean Top Navigation Bar with Contact/Support Anchor Link */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 0; margin-bottom: 60px; border-bottom: 1px solid var(--border); }
         .nav-logo { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -1px; font-family: monospace; }
         .nav-logo span { color: var(--accent-glow); }
-        .status-pill { display: flex; align-items: center; gap: 8px; font-size: 11px; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); color: var(--neon); padding: 6px 14px; border-radius: 99px; font-weight: 600; font-family: monospace; }
-        .pulse { width: 6px; height: 6px; background: var(--neon); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--neon); animation: beat 1.8s infinite; }
-        @keyframes beat { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; font-family: monospace; font-weight: 600; padding: 6px 12px; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
 
-        /* RapidLaunch Core Hero Section */
-        .hero-section { text-align: center; max-width: 750px; margin: 0 auto 90px auto; padding-top: 20px; }
+        /* Centered Marketing-Style Hero Section focused purely on tools */
+        .hero-section { text-align: center; max-width: 800px; margin: 0 auto 90px auto; padding-top: 20px; }
         .hero-tag { display: inline-block; background: var(--panel); border: 1px solid var(--border); color: var(--accent-glow); font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 99px; margin-bottom: 24px; letter-spacing: 0.5px; text-transform: uppercase; font-family: monospace; }
         .hero-section h2 { font-size: 54px; font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -2px; margin-bottom: 20px; }
         .hero-section h2 span { background: linear-gradient(135deg, #fff 30%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-section p.hero-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 35px; font-weight: 400; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-section p.hero-desc { font-size: 18px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 35px; font-weight: 400; max-width: 650px; margin-left: auto; margin-right: auto; }
         
-        /* Main CTA Hero Button styling */
-        .hero-cta-btn { display: inline-block; background: #fff; color: #000; text-decoration: none; padding: 16px 36px; font-weight: 700; font-size: 15px; border-radius: 8px; transition: background 0.2s, transform 0.2s; box-shadow: 0 8px 30px rgba(255,255,255,0.08); }
+        .hero-cta-btn { display: inline-block; background: #fff; color: #000; text-decoration: none; padding: 16px 36px; font-weight: 700; font-size: 15px; border-radius: 8px; transition: background 0.2s, transform 0.2s; box-shadow: 0 8px 30px rgba(255,255,255,0.08); text-transform: uppercase; font-family: monospace; }
         .hero-cta-btn:hover { background: #e4e4e7; transform: translateY(-1px); }
 
-        /* Integrated Telemetry Counter Grid */
+        /* Refined Custom Telemetry Bar Row */
         .telemetry-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 30px 0; margin-bottom: 90px; }
         .telemetry-node { text-align: center; }
         .tel-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; font-family: monospace; }
         .tel-value { font-size: 24px; color: #fff; font-weight: 700; font-family: monospace; }
 
-        /* Feature Section Grid Container Layout */
+        /* UI Feature Cards Layout */
         .section-title { font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; font-family: monospace; display: flex; align-items: center; gap: 12px; }
         .section-title::after { content: ""; height: 1px; background: var(--border); flex-grow: 1; }
         .features-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 100px; }
@@ -72,18 +69,29 @@
         .feature-action { display: block; background: #18181b; border: 1px solid var(--border); color: var(--text-main); padding: 10px; font-size: 12px; text-decoration: none; font-weight: 600; border-radius: 6px; margin-top: 30px; text-align: center; font-family: monospace; transition: all 0.2s; }
         .feature-action:hover { background: #fff; color: #000; border-color: #fff; }
 
-        /* BOTTOM DRAG SYSTEM (THE BOOKMARKLET INSTALL BAR) */
-        .bookmarklet-box { background: linear-gradient(180deg, var(--panel) 0%, #050507 100%); border: 1px dashed var(--border-glow); padding: 60px 40px; border-radius: 16px; text-align: center; box-shadow: 0 50px 100px rgba(0,0,0,0.7); position: relative; margin-bottom: 40px; }
+        /* Draggable Install Area Component Card */
+        .bookmarklet-box { background: linear-gradient(180deg, var(--panel) 0%, #050507 100%); border: 1px dashed var(--border-glow); padding: 60px 40px; border-radius: 16px; text-align: center; box-shadow: 0 50px 100px rgba(0,0,0,0.7); position: relative; margin-bottom: 8px; }
         .bookmarklet-box::before { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 85%; height: 1px; background: linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--accent-glow) 50%, rgba(0,0,0,0) 100%); }
         .box-title { font-size: 26px; color: #fff; margin-bottom: 12px; font-weight: 700; letter-spacing: -0.5px; }
         .box-desc { font-size: 14px; color: var(--text-secondary); max-width: 650px; margin: 0 auto 40px auto; line-height: 1.6; }
         
-        /* Draggable Anchor Element Button styling */
         .drag-node-anchor { display: inline-block; background: #fff; color: #000; padding: 20px 42px; font-weight: 800; font-size: 14px; text-decoration: none; border-radius: 6px; cursor: move; border: 1px solid #fff; transition: all 0.2s ease; text-transform: uppercase; font-family: monospace; letter-spacing: 0.5px; box-shadow: 0 4px 20px rgba(255,255,255,0.05); }
         .drag-node-anchor:hover { background: transparent; color: #fff; border-color: var(--border-glow); box-shadow: 0 0 40px rgba(59, 130, 246, 0.3); }
         
-        footer { padding: 40px 0; text-align: center; font-size: 12px; color: #3f3f46; font-family: monospace; border-top: 1px solid var(--border); }
-        @media(max-width: 768px) { .features-layout, .telemetry-row { grid-template-columns: 1fr; gap: 20px; } .hero-section h2 { font-size: 38px; } .bookmarklet-box { padding: 40px 20px; } }
+        /* Direct Replica of RapidLaunch Style Custom Website Footer Container */
+        footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 100px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .footer-left { font-family: monospace; }
+        .footer-logo { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .footer-logo span { color: var(--accent-glow); }
+        .footer-subtext { color: var(--text-secondary); font-size: 12px; }
+        .footer-links-grid { display: flex; gap: 80px; }
+        .footer-col h5 { color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: monospace; font-weight: 600; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .footer-col ul li a:hover { color: #fff; }
+
+        @media(max-width: 768px) { .features-layout, .telemetry-row, footer, .footer-links-grid { grid-template-columns: 1fr; flex-direction: column; gap: 30px; } .hero-section h2 { font-size: 38px; } .bookmarklet-box { padding: 40px 20px; } }
     </style>
 </head>
 <body>
@@ -91,42 +99,31 @@
     <div class="glow-orb-top"></div>
 
     <div class="wrapper">
-        <!-- Brand Top Navigation Header -->
         <nav>
             <div class="nav-logo">veluma<span>.</span></div>
-            <div class="status-pill"><div class="pulse"></div>PIPELINE.ACTIVE</div>
+            <div class="nav-links">
+                <!-- Change the URL below to your personal handle or contact portal link -->
+                <a href="https://x.com" target="_blank">// contact_node</a>
+            </div>
         </nav>
 
-        <!-- RapidLaunch Style Hero Dashboard Section -->
         <div class="hero-section">
-            <div class="hero-tag">Core Release // v3.0</div>
-            <h2><span>Launch tokens instantly.</span><br>No setup. No delays.</h2>
-            <p class="hero-desc">Independent on-chain execution architecture. Deploy tracking frameworks and scan localized block constraints straight from your active viewport layer.</p>
-            <a class="hero-cta-btn" href="#bookmarklet-install">Install Local Extension</a>
+            <div class="hero-tag">System Release // v3.0</div>
+            <h2><span>Track on-chain data instantly.</span><br>No delay. No noise.</h2>
+            <p class="hero-desc">Independent on-chain execution architecture. Run instant bundle analysis, map hidden distribution paths, and secure your wallet entries straight from your viewport layer.</p>
+            <a class="hero-cta-btn" href="#bookmarklet-install">Drag to Bookmark Bar</a>
         </div>
 
-        <!-- System Telemetry Infrastructure Stats Row -->
         <div class="telemetry-row">
-            <div class="telemetry-node"><div class="tel-label">latency index</div><div class="tel-value">0.00ms</div></div>
-            <div class="telemetry-node"><div class="tel-label">active configurations</div><div class="tel-value">3 / 3</div></div>
-            <div class="telemetry-node"><div class="tel-label">server operational footprint</div><div class="tel-value">$0.00 / mo</div></div>
+            <div class="telemetry-node"><div class="tel-label">delay</div><div class="telemetry-content tel-value">0.00ms</div></div>
+            <div class="telemetry-node"><div class="tel-label">active scripts</div><div class="telemetry-content tel-value">3 / 3</div></div>
+            <div class="telemetry-node"><div class="tel-label">sandbox architecture</div><div class="telemetry-content tel-value">local_storage</div></div>
         </div>
 
-        <!-- Live Tool Core Utility Cards Layout -->
         <h3 class="section-title">web terminal application modules</h3>
         <div class="features-layout">
-            <!-- App Card 1 -->
             <div class="feature-card">
                 <div class="feature-info">
                     <h4>🔎 scan.insiders</h4>
-                    <p>Isolate structural bundle cluster configurations and developer wallet allocations before deployment blocks finalize [7a75dce127ff].</p>
+                    <p>Isolate structural bundle cluster configurations and developer wallet allocations before tokens deploy [7a75dce127ff].</p>
                 </div>
-                <a class="feature-action" href="https://gmgn.ai" target="_blank">LAUNCH MODULE ↗</a>
-            </div>
-            <!-- App Card 2 -->
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>🚨 metric.filters</h4>
-                    <p>Stream real-time string data parsing profiles straight into automated open-source public blockchain scraping alert engines.</p>
-                </div>
-                <a class="feature-action" href="https://t.me" target="_blank">OPEN STREAM ↗</a>
